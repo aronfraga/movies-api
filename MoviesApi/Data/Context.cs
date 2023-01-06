@@ -10,6 +10,7 @@ namespace MoviesApi.Data {
 
         public DbSet<Category> Categorys { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<User> Users { get; set; }
 
     }
 }
