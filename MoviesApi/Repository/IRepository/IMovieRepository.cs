@@ -1,9 +1,12 @@
 ﻿using MoviesApi.Models;
+using MoviesApi.Models.Dtos;
 
 namespace MoviesApi.Repository.IRepository {
     public interface IMovieRepository {
 
         ICollection<Movie> GetMovies();
+
+        ICollection<Movie> GetMovies(bool order);
 
         Movie GetMovie(int id);
 
@@ -11,17 +14,16 @@ namespace MoviesApi.Repository.IRepository {
 
         bool ExistMovie(int id);
 
-        bool CreateMovie(Movie movie);
+        string CreateMovie(Movie movie);
 
-        bool UpdateMovie(Movie movie);
+        string UpdateMovie(Movie movie);
 
-        bool DeleteMovie(Movie movie);
+        string DeleteMovie(int id);
 
         ICollection<Movie> GetMoviesOnCategory(int Id);
 
         ICollection<Movie> SearchMovie(string name);
 
-        bool Save();
 
     }
 }

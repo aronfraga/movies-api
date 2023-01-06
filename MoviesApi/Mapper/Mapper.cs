@@ -2,10 +2,10 @@
 using MoviesApi.Models;
 using MoviesApi.Models.Dtos;
 
-namespace MoviesApi.MoviesMapper {
-    public class MoviesMapper : Profile {
+namespace MoviesApi.Mapper {
+    public class Mapper : Profile {
 
-        public MoviesMapper() {
+        public Mapper() {
             CreateMap<Category, CategoryDto>().ReverseMap();
             CreateMap<Category, CreateCategoryDto>().ReverseMap();
             CreateMap<Movie, MovieDto>().ReverseMap();

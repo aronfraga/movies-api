@@ -2,8 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MoviesApi.Data;
 using MoviesApi.Repository;
 using MoviesApi.Repository.IRepository;
-using AutoMapper;
-using MoviesApi.MoviesMapper;
+using MoviesApi.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +10,7 @@ builder.Services.AddDbContext<Context>(data => data.UseSqlServer(builder.Configu
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 
-builder.Services.AddAutoMapper(typeof(MoviesMapper));
+builder.Services.AddAutoMapper(typeof(Mapper));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
