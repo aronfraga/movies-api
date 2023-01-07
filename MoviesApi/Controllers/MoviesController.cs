@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoviesApi.Models;
 using MoviesApi.Models.Dtos;
 using MoviesApi.Repository.IRepository;
+using System.Data;
 
 namespace MoviesApi.Controllers {
 
@@ -19,6 +21,7 @@ namespace MoviesApi.Controllers {
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult GetMovies() {
             try {
@@ -33,6 +36,7 @@ namespace MoviesApi.Controllers {
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("{order:bool}")]
         public IActionResult GetMovies(bool order) {
             try {
@@ -47,6 +51,7 @@ namespace MoviesApi.Controllers {
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public IActionResult GetMovie(int id) {
             try {
@@ -59,6 +64,7 @@ namespace MoviesApi.Controllers {
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("GetMovieOnCategory/{categoryId:int}")]
         public IActionResult GetMovies(int categoryId) {
             try {
@@ -73,6 +79,7 @@ namespace MoviesApi.Controllers {
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("Search")]
         public IActionResult GetMovies(string name) {
             try {
@@ -87,6 +94,7 @@ namespace MoviesApi.Controllers {
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult CrateMovie([FromBody] MovieDto movieDto) {
             try {
@@ -99,6 +107,7 @@ namespace MoviesApi.Controllers {
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut]
         public IActionResult UpdateMovie([FromBody] MovieDto movieDto) {
             try {
@@ -111,6 +120,7 @@ namespace MoviesApi.Controllers {
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public IActionResult DeleteCategory(int id) {
             try {

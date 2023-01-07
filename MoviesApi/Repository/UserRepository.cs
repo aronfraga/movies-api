@@ -1,9 +1,8 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using MoviesApi.Data;
 using MoviesApi.Models;
+using MoviesApi.Data;
 using MoviesApi.Models.Dtos;
 using MoviesApi.Repository.IRepository;
-using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -39,8 +38,8 @@ namespace MoviesApi.Repository {
             var PasswordEncrypted = EncryptMD5(userLoginDto.Password);
 
             var userResponse = _dbcontext.Users.FirstOrDefault(data => data.UserName.ToLower() == 
-                                                           userLoginDto.UserName.ToLower() &&
-                                                           data.Password == PasswordEncrypted);
+                                                               userLoginDto.UserName.ToLower() &&
+                                                               data.Password == PasswordEncrypted);
             if (userResponse == null) throw new Exception("User or Password are incorrect");
 
             var handlerToken = new JwtSecurityTokenHandler();
@@ -63,10 +62,11 @@ namespace MoviesApi.Repository {
             };
 
             return userLoginResponseDto;
-
         }
 
         public async Task<User> RegisterAsync(UserRegisterDto userRegisterDto) {
+            ExistUser(userRegisterDto.UserName);
+    
             var PasswordEncrypted = EncryptMD5(userRegisterDto.Password);
             User user = new User() {
                 UserName = userRegisterDto.UserName,

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoviesApi.Models;
@@ -20,6 +21,7 @@ namespace MoviesApi.Controllers {
             _mapper = mapper;   
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult GetCategories() {
             try {
@@ -34,6 +36,7 @@ namespace MoviesApi.Controllers {
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("{order:bool}")]
         public IActionResult GetCategories(bool order) {
             try {
@@ -48,6 +51,7 @@ namespace MoviesApi.Controllers {
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public IActionResult GetCategory(int id) {
             try {
@@ -60,6 +64,7 @@ namespace MoviesApi.Controllers {
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult CreateCategory([FromBody] CreateCategoryDto createCategoryDto ) {
             try {
@@ -72,6 +77,7 @@ namespace MoviesApi.Controllers {
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut]
         public IActionResult UpdateCategory([FromBody] CategoryDto categoryDto) {
             try {
@@ -84,6 +90,7 @@ namespace MoviesApi.Controllers {
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public IActionResult DeleteCategory(int id) {
             try {
@@ -93,10 +100,6 @@ namespace MoviesApi.Controllers {
                 return StatusCode(500, new { request_status = "unsuccessful", response = ex.Message });
             }
         }
-
-
-
-
 
     }
 }
