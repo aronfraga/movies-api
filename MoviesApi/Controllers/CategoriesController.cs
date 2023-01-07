@@ -11,6 +11,7 @@ namespace MoviesApi.Controllers {
 
     [Route("api/[controller]")]
     [ApiController]
+    [ResponseCache(CacheProfileName = "Default_20S")]
     public class CategoriesController : ControllerBase {
 
         private readonly ICategoryRepository _repository;
@@ -23,6 +24,7 @@ namespace MoviesApi.Controllers {
 
         [AllowAnonymous]
         [HttpGet]
+        [ResponseCache(CacheProfileName = "Default_20S")]
         public IActionResult GetCategories() {
             try {
                 var response = _repository.GetCategories();
@@ -38,6 +40,7 @@ namespace MoviesApi.Controllers {
 
         [AllowAnonymous]
         [HttpGet("{order:bool}")]
+        [ResponseCache(CacheProfileName = "Default_20S")]
         public IActionResult GetCategories(bool order) {
             try {
                 var response = _repository.GetCategories(order);
@@ -53,6 +56,7 @@ namespace MoviesApi.Controllers {
 
         [AllowAnonymous]
         [HttpGet("{id}")]
+        [ResponseCache(CacheProfileName = "Default_20S")]
         public IActionResult GetCategory(int id) {
             try {
                 var response = _repository.GetCategory(id);

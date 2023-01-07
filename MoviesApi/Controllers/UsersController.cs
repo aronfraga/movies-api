@@ -24,6 +24,7 @@ namespace MoviesApi.Controllers {
 
         [Authorize(Roles = "admin")]
         [HttpGet]
+        [ResponseCache(CacheProfileName = "Default_20S")]
         public IActionResult GetUsers() {
             try {
                 var response = _repository.GetUsers();
@@ -39,6 +40,7 @@ namespace MoviesApi.Controllers {
 
         [Authorize(Roles = "admin")]
         [HttpGet("{id}")]
+        [ResponseCache(CacheProfileName = "Default_20S")]
         public IActionResult GetUser(int id) {
             try {
                 var response = _repository.GetUser(id);

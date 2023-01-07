@@ -7,10 +7,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 var ConnectionString = builder.Configuration.GetConnectionString("dbConnection");
 var key = builder.Configuration.GetValue<string>("ApiSettings:Secret");
+
+builder.Services.AddResponseCaching();
 
 builder.Services.AddDbContext<Context>(data => data.UseSqlServer(ConnectionString));
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -33,7 +36,10 @@ builder.Services.AddAuthentication(data => {
     };
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(data => {
+    data.CacheProfiles.Add("Default_20S", new CacheProfile() { Duration = 20 });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(data => {

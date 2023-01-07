@@ -23,6 +23,7 @@ namespace MoviesApi.Controllers {
 
         [AllowAnonymous]
         [HttpGet]
+        [ResponseCache(CacheProfileName = "Default_20S")]
         public IActionResult GetMovies() {
             try {
                 var response = _repository.GetMovies();
@@ -38,6 +39,7 @@ namespace MoviesApi.Controllers {
 
         [AllowAnonymous]
         [HttpGet("{order:bool}")]
+        [ResponseCache(CacheProfileName = "Default_20S")]
         public IActionResult GetMovies(bool order) {
             try {
                 var response = _repository.GetMovies(order);
@@ -53,6 +55,7 @@ namespace MoviesApi.Controllers {
 
         [AllowAnonymous]
         [HttpGet("{id}")]
+        [ResponseCache(CacheProfileName = "Default_20S")]
         public IActionResult GetMovie(int id) {
             try {
                 var response = _repository.GetMovie(id);
@@ -66,6 +69,7 @@ namespace MoviesApi.Controllers {
 
         [AllowAnonymous]
         [HttpGet("GetMovieOnCategory/{categoryId:int}")]
+        [ResponseCache(CacheProfileName = "Default_20S")]
         public IActionResult GetMovies(int categoryId) {
             try {
                 var response = _repository.GetMoviesOnCategory(categoryId);
@@ -81,6 +85,7 @@ namespace MoviesApi.Controllers {
 
         [AllowAnonymous]
         [HttpGet("Search")]
+        [ResponseCache(CacheProfileName = "Default_20S")]
         public IActionResult GetMovies(string name) {
             try {
                 var response = _repository.SearchMovie(name.Trim());
