@@ -65,6 +65,10 @@ builder.Services.AddSwaggerGen(data => {
 
 var app = builder.Build();
 
+app.UseSwaggerUI(data => {
+    data.SwaggerEndpoint("/swagger/v1/swagger.json", "Movies API V1");
+});
+
 if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
