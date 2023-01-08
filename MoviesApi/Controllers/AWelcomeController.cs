@@ -6,7 +6,7 @@ using MoviesApi.Models.Dtos;
 namespace MoviesApi.Controllers {
     [Route("api/[controller]")]
     [ApiController]
-    public class WelcomeController : ControllerBase {
+    public class AWelcomeController : ControllerBase {
 
         [AllowAnonymous]
         [HttpGet]

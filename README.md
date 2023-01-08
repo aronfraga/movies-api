@@ -23,7 +23,14 @@
 
  - Open Visual Studio and Start it.
  - or in your terminal run ---> dotnet run 
- - You need postman or insomnia to use
+ - You need postman or insomnia to use OR CAN USE SWAGGER
+ - user default 👇
+````
+{
+  "userName": "admin",
+  "password": "1234"
+}
+````
 
 ## YOU NEED TO USE TOKEN, ALL ENDPOINTS LIKE POST, PUT OR DELETE ARE RESTRICTED TO ANONYMOUS USER EXCEPT POST FOR REGISTER OR LOGIN
 
@@ -47,7 +54,7 @@ Users { GET, POST }
 	    "request_status": "successful",
 	    "response": {
 		  "user": {
-			  "id": 1,
+			  "id": 2,
 			  "userName": "admin",
 			  "name": "test",
 			  "password": "81dc9bdb52d04dc20036dbd8313ed055",
